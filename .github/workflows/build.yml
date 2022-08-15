@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
-    services:
-      msssql:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+    # services:
+    #   msssql:
+    #     image: mcr.microsoft.com/mssql/server:2019-latest
 
     steps:
       - uses: actions/checkout
