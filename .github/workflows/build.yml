@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: Linux
+    timeout-minutes: 5
+
+    services:
+      msssql:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+
+    steps:
+      - uses: actions/checkout
+      - uses: actions/setup-dotnet
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Test
+        run: dotnet test -c Release --no-build
